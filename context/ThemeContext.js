@@ -1,10 +1,17 @@
 import React, { createContext, useState } from 'react';
+
 import PropTypes from 'prop-types';
 
 const ThemeContext = createContext({});
 
 const Provider = ({ children }) => {
-  return <ThemeContext.Provider>{children}</ThemeContext.Provider>;
+  const [activeTheme, setActiveTheme] = useState('dark');
+
+  return <ThemeContext.Provider value={{ activeTheme, changeTheme }}>{children}</ThemeContext.Provider>;
+
+  function changeTheme(type) {
+    setActiveTheme(type);
+  }
 };
 
 ThemeContext.ProviderWrapper = Provider;

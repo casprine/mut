@@ -11,7 +11,7 @@ module.exports = function(api) {
           paths: [
             {
               rootPathSuffix: './',
-              rootPathPrefix: '@',
+              rootPathPrefix: '~',
             },
           ],
         },

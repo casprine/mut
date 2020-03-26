@@ -1,12 +1,23 @@
 import * as React from 'react';
-import { Platform, StatusBar, StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, SafeAreaView } from 'react-native';
 import { SplashScreen } from 'expo';
 import * as Font from 'expo-font';
-import { Ionicons } from '@expo/vector-icons';
+// import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
+import { ThemeProvider } from 'styled-components';
+import { AppearanceProvider } from 'react-native-appearance';
 
 // Root Navigator
 import RootNavigator from './navigation';
+
+// theme
+import theme from '~/theme';
+
+// context
+import { ThemeContext } from '~/context';
+
+// components
+import { StatusBar } from '~/components';
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
@@ -20,7 +31,7 @@ export default function App(props) {
 
         // Load fonts
         await Font.loadAsync({
-          ...Ionicons.font,
+          // ...Ionicons.font,
           'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
           Inter: require('./assets/fonts/Inter-Regular.ttf'),
           Karla: require('./assets/fonts/Karla-Regular.ttf'),
@@ -41,19 +52,18 @@ export default function App(props) {
     return null;
   } else {
     return (
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+      <SafeAreaView style={{ flex: 1 }}>
         <NavigationContainer ref={containerRef}>
-          <RootNavigator />
+          <ThemeProvider theme={theme}>
+            <ThemeContext.ProviderWrapper>
+              <AppearanceProvider>
+                <StatusBar />
+                <RootNavigator />
+              </AppearanceProvider>
+            </ThemeContext.ProviderWrapper>
+          </ThemeProvider>
         </NavigationContainer>
-      </View>
+      </SafeAreaView>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});

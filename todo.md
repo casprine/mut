@@ -24,5 +24,8 @@ List of screens
 
 - [x] Add fonts
 - [x] Add theme
-- [ ] Add packages
+- [x] Add && configure packages
 - [ ] Add generic components
+- [ ] Login screen
+- [ ] Signup screen
+- [ ] Collection Screen
