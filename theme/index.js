@@ -7,7 +7,7 @@ export default {
       gray: '#CBCBCB',
     },
     dark: {
-      background: '#0e141b',
+      background: 'black',
       text: '#ffffff',
       lightText: '#ECEFF0',
       gray: '#F8F8F8',

@@ -7,7 +7,12 @@ const ThemedStatusBar = ({ ...rest }) => {
   const { activeTheme } = useContext(ThemeContext);
 
   return (
-    <StatusBar {...rest} barStyle={activeTheme === 'light' ? 'light-content' : 'light-content'} backgroundColor="red" />
+    <StatusBar
+      {...rest}
+      barStyle={activeTheme === 'light' ? 'dark-content' : 'light-content'}
+      translucent
+      backgroundColor="#ffffff"
+    />
   );
 };
 

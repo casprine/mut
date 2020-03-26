@@ -17,6 +17,6 @@ const Styled = styled(Text)`
 
 StyledText.defaultProps = {
   color: 'text',
-  handing: false,
+  heading: false,
 };
 export default StyledText;

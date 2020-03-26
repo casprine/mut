@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View } from 'react-native';
 import styled from 'styled-components/native';
 import PropTypes from 'prop-types';
 
+//context
+import { ThemeContext } from '~/context';
+
 const Box = ({ backgroundColor, children, ...rest }) => {
+  const { activeTheme } = useContext(ThemeContext);
+
   return (
-    <StyledBox backgroundColor={backgroundColor} {...rest}>
+    <StyledBox backgroundColor={backgroundColor} activeTheme={activeTheme} {...rest}>
       {children}
     </StyledBox>
   );
 };
 
 const StyledBox = styled(View)`
-  background-color: ${({ theme, backgroundColor }) => theme.colors[backgroundColor]};
+  background-color: ${({ theme, backgroundColor, activeTheme }) => theme.colors[activeTheme][backgroundColor]};
 `;
 
 Box.defaultProps = {
-  backgroundColor: 'white',
+  backgroundColor: 'background',
 };
 
 Box.propTypes = {
