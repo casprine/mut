@@ -1,7 +1,7 @@
 import React from 'react';
 
 // screens
-import { AuthNavigator, AppNavigator } from '@screens';
+import { AuthNavigator, AppNavigator } from '@/screens/index';
 
 const RootNavigator = () => {
   const isLoggedIn = false;

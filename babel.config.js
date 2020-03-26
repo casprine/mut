@@ -10,18 +10,8 @@ module.exports = function(api) {
         {
           paths: [
             {
-              rootPathSuffix: 'components',
-              rootPathPrefix: '@components',
-            },
-
-            {
-              rootPathSuffix: 'context',
-              rootPathPrefix: '@context',
-            },
-
-            {
-              rootPathSuffix: 'screens',
-              rootPathPrefix: '@screens',
+              rootPathSuffix: './',
+              rootPathPrefix: '@',
             },
           ],
         },
