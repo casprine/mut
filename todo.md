@@ -23,5 +23,6 @@ List of screens
 ## Todos
 
 - [ ] Add fonts
+- [ ] Add theme
 - [ ] Add packages
 - [ ] Add generic components
