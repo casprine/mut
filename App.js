@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { StyleSheet, View, SafeAreaView } from 'react-native';
 import { SplashScreen } from 'expo';
 import * as Font from 'expo-font';
 // import { Ionicons } from '@expo/vector-icons';
@@ -17,7 +16,7 @@ import theme from '~/theme';
 import { ThemeContext } from '~/context';
 
 // components
-import { StatusBar } from '~/components/common';
+import { StatusBar, SafeAreaView } from '~/components/common';
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
@@ -52,18 +51,18 @@ export default function App(props) {
     return null;
   } else {
     return (
-      <SafeAreaView style={{ flex: 1 }}>
-        <NavigationContainer ref={containerRef}>
-          <ThemeProvider theme={theme}>
-            <ThemeContext.ProviderWrapper>
+      <ThemeContext.ProviderWrapper>
+        <SafeAreaView>
+          <NavigationContainer ref={containerRef}>
+            <ThemeProvider theme={theme}>
               <AppearanceProvider>
                 <StatusBar />
                 <RootNavigator />
               </AppearanceProvider>
-            </ThemeContext.ProviderWrapper>
-          </ThemeProvider>
-        </NavigationContainer>
-      </SafeAreaView>
+            </ThemeProvider>
+          </NavigationContainer>
+        </SafeAreaView>
+      </ThemeContext.ProviderWrapper>
     );
   }
 }
