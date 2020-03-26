@@ -22,7 +22,7 @@ List of screens
 
 ## Todos
 
-- [ ] Add fonts
-- [ ] Add theme
+- [x] Add fonts
+- [x] Add theme
 - [ ] Add packages
 - [ ] Add generic components
