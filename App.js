@@ -17,7 +17,7 @@ import theme from '~/theme';
 import { ThemeContext } from '~/context';
 
 // components
-import { StatusBar } from '~/components';
+import { StatusBar } from '~/components/common';
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);

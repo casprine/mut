@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { SafeAreaView, Button } from 'react-native';
 
 // componets
-import { Text } from '~/components';
+import { Text } from '~/components/common';
 
 // context
 import { ThemeContext } from '~/context';
