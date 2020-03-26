@@ -1,14 +1,14 @@
 export default {
   colors: {
     light: {
-      bg: '#ffffff',
-      regularText: '#000028',
+      background: '#ffffff',
+      text: '#000028',
       lightText: '#4A5B64',
       gray: '#CBCBCB',
     },
     dark: {
-      bg: '#000028',
-      regularText: '#ffffff',
+      background: '#000028',
+      text: '#ffffff',
       lightText: '#ECEFF0',
       gray: '#F8F8F8',
     },

@@ -6,7 +6,7 @@ import { ThemeContext } from '~/context';
 const ThemedStatusBar = ({ ...rest }) => {
   const { activeTheme } = useContext(ThemeContext);
 
-  return <StatusBar {...rest} barStyle={activeTheme === 'light' ? 'light-content' : 'dark-content'} />;
+  return <StatusBar {...rest} barStyle={activeTheme === 'light' ? 'dark-content' : 'light-content'} />;
 };
 
 export default ThemedStatusBar;
