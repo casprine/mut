@@ -11,7 +11,7 @@ import { ThemeContext } from '~/context';
 import theme from '~/theme';
 
 export const KeypadText = props => {
-  return <Text size={1.563} {...props} />;
+  return <Text heading size={1.563} {...props} />;
 };
 
 export const OneKey = {
@@ -126,7 +126,7 @@ export const ReturnKey = {
   value: 'return',
   component: () => {
     return (
-      <KeypadText size={1.2} fontFamily="Firma" color="greenPrimary">
+      <KeypadText size={1.2} fontFamily="Firma">
         Done
       </KeypadText>
     );

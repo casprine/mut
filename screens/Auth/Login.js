@@ -1,16 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { Button } from 'react-native';
 
 // componets
 import { Text, Box, SafeAreaView, StatusBar } from '~/components/common';
 import { VerificationCodeDisplay, ManagedKeypad } from '~/components/formElements';
 
-// context
-import { ThemeContext } from '~/context';
-
 const Login = () => {
-  const { activeTheme, changeTheme } = useContext(ThemeContext);
   const [pin, setPin] = useState('');
 
   const username = 'Casprine';
@@ -20,7 +15,7 @@ const Login = () => {
       <SafeAreaView style={{ flex: 1 }}>
         <Box style={styles.container}>
           <Box style={styles.salutation}>
-            <Text heading size={1.563} fonFamily="Fi">
+            <Text heading size={1.563}>
               Welcome {username}
             </Text>
             <Text style={styles.subText} align="center">
