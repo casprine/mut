@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { SplashScreen } from 'expo';
 import * as Font from 'expo-font';
-// import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { ThemeProvider } from 'styled-components';
 import { AppearanceProvider } from 'react-native-appearance';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 // Root Navigator
 import RootNavigator from './navigation';
@@ -18,6 +19,10 @@ import { ThemeContext } from '~/context';
 // components
 import { StatusBar, SafeAreaView } from '~/components/common';
 
+EStyleSheet.build({
+  // always call EStyleSheet.build() even if you don't use global variables!
+});
+
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
   const containerRef = React.useRef();
@@ -30,7 +35,7 @@ export default function App(props) {
 
         // Load fonts
         await Font.loadAsync({
-          // ...Ionicons.font,
+          ...Ionicons.font,
           'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
           Inter: require('./assets/fonts/Inter-Regular.ttf'),
           Karla: require('./assets/fonts/Karla-Regular.ttf'),
