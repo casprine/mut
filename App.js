@@ -17,7 +17,7 @@ import theme from '~/theme';
 import { ThemeContext } from '~/context';
 
 // components
-import { StatusBar, SafeAreaView } from '~/components/common';
+import { SafeAreaView } from '~/components/common';
 
 EStyleSheet.build({
   // always call EStyleSheet.build() even if you don't use global variables!
@@ -60,7 +60,6 @@ export default function App(props) {
           <NavigationContainer ref={containerRef}>
             <ThemeProvider theme={theme}>
               <AppearanceProvider>
-                <StatusBar />
                 <RootNavigator />
               </AppearanceProvider>
             </ThemeProvider>

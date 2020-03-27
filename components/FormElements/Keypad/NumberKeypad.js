@@ -17,7 +17,6 @@ const KeyBox = styled(TouchableOpacity)`
   justify-content: center;
   align-items: center;
   display: flex;
-  border: 2px solid red;
 `;
 
 const Key = ({ children, onTap }) => {
