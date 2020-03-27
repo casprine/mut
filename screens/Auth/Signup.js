@@ -16,12 +16,12 @@ const Signup = () => {
     pin: '',
   });
 
-  // useEffect(() => {
-  //   const handler = InteractionManager.runAfterInteractions(() => {
-  //     inputRef.current.focus();
-  //   });
-  //   return () => handler;
-  // }, []);
+  useEffect(() => {
+    const handler = InteractionManager.runAfterInteractions(() => {
+      inputRef.current.focus();
+    });
+    return () => handler;
+  }, []);
 
   return (
     <>
