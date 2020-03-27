@@ -23,7 +23,7 @@ const StyledText = ({ inverse, heading, size, color, style, ...rest }) => {
 };
 
 const Styled = styled(Text)`
-  font-family: ${({ heading }) => (heading ? 'Firma' : 'Inter')};
+  font-family: ${({ heading }) => (heading ? 'Larsseit' : 'Circular')};
 `;
 
 StyledText.defaultProps = {

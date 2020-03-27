@@ -18,6 +18,7 @@ const Box = ({ backgroundColor, children, ...rest }) => {
 
 const StyledBox = styled(View)`
   background-color: ${({ theme, backgroundColor, activeTheme }) => theme.colors[activeTheme][backgroundColor]};
+  /* border: 1px solid red; */
 `;
 
 Box.defaultProps = {

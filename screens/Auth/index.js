@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 const AuthNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Signup"
+      initialRouteName="Login"
       screenOptions={{
         headerShown: false,
         gestureEnabled: true,

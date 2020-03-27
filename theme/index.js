@@ -13,11 +13,11 @@ export default {
     dark: {
       background: '#000000',
       text: '#ffffff',
-      textInverse: '#ffffff',
+      textInverse: 'white',
       lightText: '#ECEFF0',
       gray: '#F8F8F8',
       box: '#1A202C',
-      buttonBackground: '#1A202C',
+      buttonBackground: '#22543D',
       greenPrimary: '#22543D',
     },
   },

@@ -37,7 +37,8 @@ export default function App(props) {
         await Font.loadAsync({
           ...Ionicons.font,
           Inter: require('./assets/fonts/Inter-Regular.ttf'),
-          Firma: require('./assets/fonts/Firma.ttf'),
+          Larsseit: require('./assets/fonts/Larsseit.ttf'),
+          Circular: require('./assets/fonts/Circular.ttf'),
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service

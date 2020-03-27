@@ -65,7 +65,7 @@ const StyledInput = styled(TextInput)`
   border-radius: 5px;
   padding: 0 20px;
   align-self: stretch;
-  font-family: 'Firma';
+  font-family: 'Inter';
   color: ${({ theme, activeTheme }) => theme.colors[activeTheme].text};
   border: 2px solid
     ${({ theme, focus, activeTheme }) => {

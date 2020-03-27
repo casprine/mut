@@ -126,7 +126,7 @@ export const ReturnKey = {
   value: 'return',
   component: () => {
     return (
-      <KeypadText size={1.2} fontFamily="Firma">
+      <KeypadText size={1.2} fontFamily="Larsseit">
         Done
       </KeypadText>
     );
