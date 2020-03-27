@@ -9,7 +9,7 @@ import { ThemeContext } from '~/context';
 // theme
 import theme from '~/theme';
 
-const StyledText = ({ size, color, style, heading, ...rest }) => {
+const StyledText = ({ fontFamily, size, color, style, ...rest }) => {
   const { activeTheme } = useContext(ThemeContext);
 
   const styles = EStyleSheet.create({
@@ -19,14 +19,19 @@ const StyledText = ({ size, color, style, heading, ...rest }) => {
     },
   });
 
-  return <Styled {...rest} style={[style, styles.text]} activeTheme={activeTheme} color={color} heading={heading} />;
+  return (
+    <Styled {...rest} fontFamily={fontFamily} style={[style, styles.text]} activeTheme={activeTheme} color={color} />
+  );
 };
 
-const Styled = styled(Text)``;
+const Styled = styled(Text)`
+  font-family: ${({ fontFamily }) => fontFamily};
+  border: 1px solid red;
+`;
 
 StyledText.defaultProps = {
   color: 'text',
-  heading: false,
-  size: 1.2,
+  fontFamily: 'Inter',
+  size: 1,
 };
 export default StyledText;

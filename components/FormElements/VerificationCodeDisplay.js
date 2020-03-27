@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import styled from 'styled-components/native';
 
-// theme
-import theme from '~/theme';
-
 // components
 import { Text } from '~/components/common';
 
