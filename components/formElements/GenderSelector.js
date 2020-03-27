@@ -25,7 +25,7 @@ const genderList = [
   },
 
   {
-    title: 'LGBT',
+    title: 'Other',
     url:
       'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/237/rainbow-flag_1f3f3-fe0f-200d-1f308.png',
   },
@@ -80,7 +80,7 @@ const Gender = ({ title, url, selectedGender, selectGender }) => {
 
 const GenderSelector = () => {
   const { activeTheme } = useContext(ThemeContext);
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const [selectedGender, setSelectedGender] = useState({
     title: '',
     url: '',
