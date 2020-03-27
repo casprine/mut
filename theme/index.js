@@ -9,6 +9,7 @@ export default {
       box: '#ECEFF0',
       buttonBackground: '#000000',
       greenPrimary: '#68D391',
+      bottomSheetBackground: '#ECEFF0',
     },
     dark: {
       background: '#000000',
@@ -17,8 +18,9 @@ export default {
       lightText: '#ECEFF0',
       gray: '#F8F8F8',
       box: '#1A202C',
-      buttonBackground: '#22543D',
+      buttonBackground: '#121212',
       greenPrimary: '#22543D',
+      bottomSheetBackground: '#121212',
     },
   },
 };
