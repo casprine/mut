@@ -9,7 +9,7 @@ import { ThemeContext } from '~/context';
 // theme
 import theme from '~/theme';
 
-const StyledText = ({ heading, size, color, style, ...rest }) => {
+const StyledText = ({ inverse, heading, size, color, style, ...rest }) => {
   const { activeTheme } = useContext(ThemeContext);
 
   const styles = EStyleSheet.create({
@@ -30,5 +30,6 @@ StyledText.defaultProps = {
   color: 'text',
   heading: false,
   size: 1,
+  inverse: false,
 };
 export default StyledText;
