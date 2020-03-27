@@ -1,12 +1,11 @@
 import React, { useState, createRef, useEffect } from 'react';
 import { InteractionManager, Image, Platform } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 // componets
 import { Text, Box, SafeAreaView, StatusBar } from '~/components/common';
-import { Button, TextInput } from '~/components/formElements';
+import { Button, TextInput, GenderSelector } from '~/components/formElements';
 
 const inputRef = createRef();
 
@@ -16,12 +15,12 @@ const Signup = () => {
     pin: '',
   });
 
-  useEffect(() => {
-    const handler = InteractionManager.runAfterInteractions(() => {
-      inputRef.current.focus();
-    });
-    return () => handler;
-  }, []);
+  // useEffect(() => {
+  //   const handler = InteractionManager.runAfterInteractions(() => {
+  //     inputRef.current.focus();
+  //   });
+  //   return () => handler;
+  // }, []);
 
   return (
     <>
@@ -57,7 +56,7 @@ const Signup = () => {
                   value={state.username}
                   placeholderText="Username"
                   name="username"
-                  style={styles.usernameInput}
+                  style={styles.input}
                   onChange={(name, value) => setState({ ...state, [name]: value })}
                 />
 
@@ -66,9 +65,12 @@ const Signup = () => {
                   placeholderText="Pin"
                   name="pin"
                   maxLength={4}
+                  style={styles.input}
                   keyboardType="number-pad"
                   onChange={(name, value) => setState({ ...state, [name]: value })}
                 />
+
+                <GenderSelector />
               </Box>
             </Box>
 
@@ -120,7 +122,7 @@ const styles = EStyleSheet.create({
     marginTop: '0.7rem',
   },
 
-  usernameInput: {
+  input: {
     marginBottom: '1.5rem',
   },
 

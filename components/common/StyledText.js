@@ -24,6 +24,7 @@ const StyledText = ({ inverse, heading, size, color, style, ...rest }) => {
 
 const Styled = styled(Text)`
   font-family: ${({ heading }) => (heading ? 'Larsseit' : 'Circular')};
+  /* border: 1px solid red; */
 `;
 
 StyledText.defaultProps = {

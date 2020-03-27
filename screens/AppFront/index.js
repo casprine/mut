@@ -6,7 +6,7 @@ import Collection from './Collections';
 
 const Stack = createStackNavigator();
 
-const AuthNavigator = () => {
+const AppNavigator = () => {
   return (
     <Stack.Navigator
       initialRouteName="Collection"
@@ -20,4 +20,4 @@ const AuthNavigator = () => {
   );
 };
 
-export default AuthNavigator;
+export default AppNavigator;

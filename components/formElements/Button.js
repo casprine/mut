@@ -40,7 +40,7 @@ Button.defaultProps = {
 };
 
 const StyledButton = styled(TouchableOpacity)`
-  height: 55px;
+  height: 65px;
   text-align: center;
   justify-content: center;
   align-items: center;
