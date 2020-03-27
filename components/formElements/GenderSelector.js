@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react';
-import { Image, TouchableWithoutFeedback } from 'react-native';
+import { Image, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import Modal from 'react-native-modal';
+import { Ionicons } from '@expo/vector-icons';
 
 // component
 import { Box, Text } from '~/components/common';
@@ -10,7 +11,27 @@ import { Box, Text } from '~/components/common';
 //context
 import { ThemeContext } from '~/context';
 
-const GenderBottomSheetContent = () => {
+// theme
+import theme from '~/theme';
+
+const genderList = [
+  {
+    title: 'Male',
+    url: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/237/man_1f468.png',
+  },
+  {
+    title: 'Female',
+    url: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/237/woman_1f469.png',
+  },
+
+  {
+    title: 'LGBT',
+    url:
+      'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/237/rainbow-flag_1f3f3-fe0f-200d-1f308.png',
+  },
+];
+
+const GenderBottomSheetContent = ({ selectedGender, selectGender }) => {
   return (
     <>
       <Box backgroundColor="text" backgroundColor="bottomSheetBackground" style={styles.top} />
@@ -20,35 +41,62 @@ const GenderBottomSheetContent = () => {
             Select your gender
           </Text>
         </Box>
+
+        <Box backgroundColor="bottomSheetBackground">
+          {genderList.map((gender, index) => {
+            return <Gender selectGender={selectGender} selectedGender={selectedGender} {...gender} key={index} />;
+          })}
+        </Box>
       </StyledGenderBottomSheetContentContainer>
     </>
   );
 };
 
-const StyledGenderBottomSheetContentContainer = styled(Box)`
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-`;
+const Gender = ({ title, url, selectedGender, selectGender }) => {
+  const { activeTheme } = useContext(ThemeContext);
+
+  return (
+    <TouchableOpacity activeOpacity={0.5} onPress={() => selectGender({ title, url })}>
+      <StyledGender backgroundColor="bottomSheetBackground" style={styles.gender}>
+        {selectedGender.title === title && (
+          <Ionicons name="md-checkbox-outline" size={17} color={theme.colors[activeTheme].text} />
+        )}
+        {selectedGender.title !== title && (
+          <Ionicons name="md-square-outline" size={17} color={theme.colors[activeTheme].text} />
+        )}
+        <Text size={1.3} style={{ fontFamily: 'Inter', marginLeft: 10 }}>
+          {title}
+        </Text>
+        <Image
+          style={styles.image}
+          source={{
+            uri: url,
+          }}
+        />
+      </StyledGender>
+    </TouchableOpacity>
+  );
+};
 
 const GenderSelector = () => {
   const { activeTheme } = useContext(ThemeContext);
   const [showModal, setShowModal] = useState(true);
   const [selectedGender, setSelectedGender] = useState({
-    name: '',
-    imageUrl: '',
+    title: '',
+    url: '',
     selected: false,
   });
 
   return (
     <TouchableWithoutFeedback onPress={() => setShowModal(!showModal)}>
-      <StyledGenderRender activeTheme={activeTheme} on>
+      <StyledGenderRender activeTheme={activeTheme}>
         {selectedGender.selected && (
           <>
-            <Text style={{ fontFamily: 'Inter' }}> {selectedGender.name} </Text>
+            <Text style={{ fontFamily: 'Inter' }}> {selectedGender.title} </Text>
             <Image
               style={styles.image}
               source={{
-                uri: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/237/woman_1f469.png',
+                uri: selectedGender.url,
               }}
             />
           </>
@@ -62,11 +110,16 @@ const GenderSelector = () => {
           hideModalContentWhileAnimating
           style={{ margin: 0, justifyContent: 'flex-end' }}
         >
-          <GenderBottomSheetContent />
+          <GenderBottomSheetContent selectedGender={selectedGender} selectGender={selectGender} />
         </Modal>
       </StyledGenderRender>
     </TouchableWithoutFeedback>
   );
+
+  function selectGender(gender) {
+    setSelectedGender({ ...gender, selected: true });
+    setShowModal(false);
+  }
 };
 
 const StyledGenderRender = styled(Box)`
@@ -79,6 +132,15 @@ const StyledGenderRender = styled(Box)`
   font-size: 17px;
 `;
 
+const StyledGenderBottomSheetContentContainer = styled(Box)`
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+`;
+
+const StyledGender = styled(Box)`
+  align-items: center;
+  flex-direction: row;
+`;
 const styles = EStyleSheet.create({
   container: {},
 
@@ -99,6 +161,7 @@ const styles = EStyleSheet.create({
   contentContainerHeader: {
     alignItems: 'center',
     marginTop: '0.5rem',
+    marginBottom: '0.5rem',
   },
 
   top: {
@@ -108,6 +171,12 @@ const styles = EStyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     marginBottom: '0.4rem',
+  },
+
+  gender: {
+    paddingLeft: '2rem',
+    paddingRight: '2rem',
+    paddingTop: '1.8rem',
   },
 });
 
