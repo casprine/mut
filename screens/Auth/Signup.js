@@ -63,7 +63,7 @@ const Signup = () => {
           </Box>
         </Box>
         <Button styleOverride={{ marginTop: 'auto', margin: 0 }}>
-          <Text color="textInverse"> Start </Text>
+          <Text color="textInverse"> Welcome Aboard </Text>
         </Button>
       </SafeAreaView>
     </>
