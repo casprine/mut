@@ -11,7 +11,7 @@ import { ThemeContext } from '~/context';
 import theme from '~/theme';
 
 export const KeypadText = props => {
-  return <Text heading size={1.563} {...props} />;
+  return <Text size={1.563} {...props} />;
 };
 
 export const OneKey = {
