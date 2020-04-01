@@ -2,7 +2,6 @@ import React, { useState, useContext, createRef } from 'react';
 import { Image, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import Modal from 'react-native-modal';
 import { Ionicons } from '@expo/vector-icons';
 
 // component
@@ -55,7 +54,7 @@ const Gender = ({ title, url, selectedGender, selectGender }) => {
   const { activeTheme } = useContext(ThemeContext);
 
   return (
-    <TouchableOpacity activeOpacity={0.5} onPress={() => selectGender({ title, url })}>
+    <TouchableOpacity activeOpacity={0.8} onPress={() => selectGender({ title, url })}>
       <StyledGender backgroundColor="bottomSheetBackground" style={styles.gender}>
         {selectedGender.title === title && (
           <Ionicons name="md-checkbox-outline" size={17} color={theme.colors[activeTheme].text} />
@@ -63,7 +62,7 @@ const Gender = ({ title, url, selectedGender, selectGender }) => {
         {selectedGender.title !== title && (
           <Ionicons name="md-square-outline" size={17} color={theme.colors[activeTheme].text} />
         )}
-        <Text size={1.3} style={{ fontFamily: 'Inter', marginLeft: 10 }}>
+        <Text size={1.3} style={{ marginLeft: 10 }}>
           {title}
         </Text>
         <Image
