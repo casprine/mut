@@ -36,19 +36,17 @@ const genderList = [
 const GenderBottomSheetContent = ({ selectedGender, selectGender }) => {
   return (
     <>
-      <StyledGenderBottomSheetContentContainer backgroundColor="bottomSheetBackground" style={styles.contentContainer}>
-        <Box backgroundColor="bottomSheetBackground" style={styles.contentContainerHeader}>
-          <Text heading size={1.4}>
-            Select your gender
-          </Text>
-        </Box>
+      <Box backgroundColor="bottomSheetBackground" style={styles.contentContainerHeader}>
+        <Text heading size={1.4}>
+          Select your gender
+        </Text>
+      </Box>
 
-        <Box backgroundColor="bottomSheetBackground">
-          {genderList.map((gender, index) => {
-            return <Gender selectGender={selectGender} selectedGender={selectedGender} {...gender} key={index} />;
-          })}
-        </Box>
-      </StyledGenderBottomSheetContentContainer>
+      <Box backgroundColor="bottomSheetBackground">
+        {genderList.map((gender, index) => {
+          return <Gender selectGender={selectGender} selectedGender={selectedGender} {...gender} key={index} />;
+        })}
+      </Box>
     </>
   );
 };
@@ -105,9 +103,8 @@ const GenderSelector = () => {
           {!selectedGender.selected && <Text color="gray">Gender</Text>}
         </StyledGenderRender>
       </TouchableWithoutFeedback>
-      <BottomSheet ref={refRBSheet} height={500}>
-        <Text> HEllow orld</Text>
-        {/* <GenderBottomSheetContent selectedGender={selectedGender} selectGender={selectGender} /> */}
+      <BottomSheet ref={refRBSheet} height={300}>
+        <GenderBottomSheetContent selectedGender={selectedGender} selectGender={selectGender} />
       </BottomSheet>
     </>
   );
@@ -125,11 +122,6 @@ const StyledGenderRender = styled(Box)`
   align-items: center;
   padding: 0 15px;
   font-size: 17px;
-`;
-
-const StyledGenderBottomSheetContentContainer = styled(Box)`
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
 `;
 
 const StyledGender = styled(Box)`
