@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, createRef } from 'react';
 import { Image, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 import EStyleSheet from 'react-native-extended-stylesheet';
@@ -6,13 +6,15 @@ import Modal from 'react-native-modal';
 import { Ionicons } from '@expo/vector-icons';
 
 // component
-import { Box, Text } from '~/components/common';
+import { Box, Text, BottomSheet } from '~/components/common';
 
 //context
 import { ThemeContext } from '~/context';
 
 // theme
 import theme from '~/theme';
+
+const refRBSheet = createRef();
 
 const genderList = [
   {
@@ -34,7 +36,6 @@ const genderList = [
 const GenderBottomSheetContent = ({ selectedGender, selectGender }) => {
   return (
     <>
-      <Box backgroundColor="text" backgroundColor="bottomSheetBackground" style={styles.top} />
       <StyledGenderBottomSheetContentContainer backgroundColor="bottomSheetBackground" style={styles.contentContainer}>
         <Box backgroundColor="bottomSheetBackground" style={styles.contentContainerHeader}>
           <Text heading size={1.4}>
@@ -80,7 +81,6 @@ const Gender = ({ title, url, selectedGender, selectGender }) => {
 
 const GenderSelector = () => {
   const { activeTheme } = useContext(ThemeContext);
-  const [showModal, setShowModal] = useState(false);
   const [selectedGender, setSelectedGender] = useState({
     title: '',
     url: '',
@@ -88,37 +88,32 @@ const GenderSelector = () => {
   });
 
   return (
-    <TouchableWithoutFeedback onPress={() => setShowModal(!showModal)}>
-      <StyledGenderRender activeTheme={activeTheme}>
-        {selectedGender.selected && (
-          <>
-            <Text style={{ fontFamily: 'Inter' }}> {selectedGender.title} </Text>
-            <Image
-              style={styles.image}
-              source={{
-                uri: selectedGender.url,
-              }}
-            />
-          </>
-        )}
-        {!selectedGender.selected && <Text color="gray">Gender</Text>}
-
-        <Modal
-          onBackdropPress={() => setShowModal(!showModal)}
-          onSwipeComplete={() => setShowModal(!showModal)}
-          isVisible={showModal}
-          hideModalContentWhileAnimating
-          style={{ margin: 0, justifyContent: 'flex-end' }}
-        >
-          <GenderBottomSheetContent selectedGender={selectedGender} selectGender={selectGender} />
-        </Modal>
-      </StyledGenderRender>
-    </TouchableWithoutFeedback>
+    <>
+      <TouchableWithoutFeedback onPress={() => refRBSheet.current.open()}>
+        <StyledGenderRender activeTheme={activeTheme}>
+          {selectedGender.selected && (
+            <>
+              <Text style={{ fontFamily: 'Inter' }}> {selectedGender.title} </Text>
+              <Image
+                style={styles.image}
+                source={{
+                  uri: selectedGender.url,
+                }}
+              />
+            </>
+          )}
+          {!selectedGender.selected && <Text color="gray">Gender</Text>}
+        </StyledGenderRender>
+      </TouchableWithoutFeedback>
+      <BottomSheet ref={refRBSheet} height={500}>
+        <Text> HEllow orld</Text>
+        {/* <GenderBottomSheetContent selectedGender={selectedGender} selectGender={selectGender} /> */}
+      </BottomSheet>
+    </>
   );
 
   function selectGender(gender) {
     setSelectedGender({ ...gender, selected: true });
-    setShowModal(false);
   }
 };
 
@@ -154,7 +149,7 @@ const styles = EStyleSheet.create({
     height: 17,
   },
   contentContainer: {
-    height: '17rem',
+    height: '100%',
     padding: '1rem',
   },
 
@@ -162,15 +157,6 @@ const styles = EStyleSheet.create({
     alignItems: 'center',
     marginTop: '0.5rem',
     marginBottom: '0.5rem',
-  },
-
-  top: {
-    width: 50,
-    height: 4,
-    borderRadius: 40,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    marginBottom: '0.4rem',
   },
 
   gender: {

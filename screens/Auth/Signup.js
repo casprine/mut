@@ -1,4 +1,4 @@
-import React, { useState, createRef, useEffect } from 'react';
+import React, { useState, createRef } from 'react';
 import { InteractionManager, Image, Platform } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import EStyleSheet from 'react-native-extended-stylesheet';
@@ -14,13 +14,6 @@ const Signup = () => {
     username: '',
     pin: '',
   });
-
-  // useEffect(() => {
-  //   const handler = InteractionManager.runAfterInteractions(() => {
-  //     inputRef.current.focus();
-  //   });
-  //   return () => handler;
-  // }, []);
 
   return (
     <>
