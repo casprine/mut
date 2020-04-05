@@ -4,7 +4,7 @@ import React from 'react';
 import { AuthNavigator, AppNavigator } from '~/screens';
 
 const RootNavigator = () => {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
   return (
     <>
       {isLoggedIn && <AppNavigator />}
